@@ -37,7 +37,7 @@ typedef struct {
     PyMODINIT_FUNC                                             \
     PyInit_##modname(void)                                     \
     {                                                          \
-        return _h2py(init_##modname##_impl(_HPyGetContext())); \
+        return _h2py(init_##modname##_impl(_HPy_GetContext()));\
     }
 
 #endif // HPY_UNIVERSAL_ABI

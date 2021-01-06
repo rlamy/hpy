@@ -6,14 +6,14 @@
     static PyObject *                                                   \
     SYM(PyObject *self, PyObject *noargs)                               \
     {                                                                   \
-        return _h2py(IMPL(_HPyGetContext(), _py2h(self)));              \
+        return _h2py(IMPL(_HPy_GetContext(), _py2h(self)));              \
     }
 
 #define _HPyFunc_TRAMPOLINE_HPyFunc_O(SYM, IMPL)                        \
     static PyObject *                                                   \
     SYM(PyObject *self, PyObject *arg)                                  \
     {                                                                   \
-        return _h2py(IMPL(_HPyGetContext(), _py2h(self), _py2h(arg)));  \
+        return _h2py(IMPL(_HPy_GetContext(), _py2h(self), _py2h(arg)));  \
     }
 
 #define _HPyFunc_TRAMPOLINE_HPyFunc_VARARGS(SYM, IMPL)                  \
@@ -24,7 +24,7 @@
         /* is equivalent to an array of "HPy" with enough casting... */ \
         HPy *items = (HPy *)&PyTuple_GET_ITEM(args, 0);                 \
         Py_ssize_t nargs = PyTuple_GET_SIZE(args);                      \
-        return _h2py(IMPL(_HPyGetContext(),                             \
+        return _h2py(IMPL(_HPy_GetContext(),                             \
                                  _py2h(self), items, nargs));           \
     }
 
@@ -36,7 +36,7 @@
         /* is equivalent to an array of "HPy" with enough casting... */ \
         HPy *items = (HPy *)&PyTuple_GET_ITEM(args, 0);                 \
         Py_ssize_t nargs = PyTuple_GET_SIZE(args);                      \
-        return _h2py(IMPL(_HPyGetContext(), _py2h(self),                \
+        return _h2py(IMPL(_HPy_GetContext(), _py2h(self),                \
                                  items, nargs, _py2h(kw)));             \
     }
 
@@ -48,7 +48,7 @@
         /* is equivalent to an array of "HPy" with enough casting... */ \
         HPy *items = (HPy *)&PyTuple_GET_ITEM(args, 0);                 \
         Py_ssize_t nargs = PyTuple_GET_SIZE(args);                      \
-        return IMPL(_HPyGetContext(), _py2h(self),                      \
+        return IMPL(_HPy_GetContext(), _py2h(self),                      \
                     items, nargs, _py2h(kw));                           \
     }
 

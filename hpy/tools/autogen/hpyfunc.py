@@ -157,7 +157,7 @@ class autogen_cpython_hpyfunc_trampoline_h(AutoGenFile):
                 result = '_h2py'
             else:
                 result = ''
-            args = ['_HPyGetContext()']
+            args = ['_HPy_GetContext()']
             for i, param in enumerate(hpyfunc.params()[1:]):
                 pname = param.name
                 if pname is None:

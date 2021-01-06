@@ -138,7 +138,7 @@ static inline void* HPy_AsVoidP(HPy h) { return (void*)h._o; }
 
 
 HPyAPI_FUNC(HPyContext)
-_HPyGetContext(void) {
+_HPy_GetContext(void) {
     HPyContext ctx = &_global_ctx;
     if (HPy_IsNull(ctx->h_None)) {
         // XXX: we need to find a better way to check whether the ctx is

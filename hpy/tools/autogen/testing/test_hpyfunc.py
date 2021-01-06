@@ -130,12 +130,12 @@ class TestHPyFunc(BaseTestAutogen):
             #define _HPyFunc_TRAMPOLINE_HPyFunc_FOO(SYM, IMPL) \
                 static cpy_PyObject *SYM(cpy_PyObject *arg, int xy) \
                 { \
-                    return _h2py(IMPL(_HPyGetContext(), _py2h(arg), xy)); \
+                    return _h2py(IMPL(_HPy_GetContext(), _py2h(arg), xy)); \
                 }
             #define _HPyFunc_TRAMPOLINE_HPyFunc_BAR(SYM, IMPL) \
                 static cpy_PyObject *SYM(cpy_PyObject *arg0, int arg1) \
                 { \
-                    return _h2py(IMPL(_HPyGetContext(), _py2h(arg0), arg1)); \
+                    return _h2py(IMPL(_HPy_GetContext(), _py2h(arg0), arg1)); \
                 }
         """
         assert src_equal(got, exp)
